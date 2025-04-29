@@ -1,28 +1,27 @@
 {
-  "title": "google news",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scrapeless.com/captcha/turnstile.schema.json",
+  "title": "google finance",
   "type": "object",
   "schemaVersion": 1,
   "properties": {
     "q": {
-      "title": "Q",
+      "title": "Search Query",
+      "description": "Parameter defines the query you want to search. It can be a stock, index, mutual fund, currency or futures.",
       "type": "string",
-      "description": "search param.",
-      "editor": "textfield",
-      "prefill": "GOOGL:NASDAQ"
+      "default": "GOOGL:NASDAQ"
     },
     "hl": {
-      "title": "HL",
+      "title": "Language",
+      "description": "Parameter defines the language to use for the Google search. It's a two-letter language code. (e.g., `en` for English, `es` for Spanish, or `fr` for French).",
       "type": "string",
-      "description": "search param.",
-      "editor": "textfield",
-      "prefill": "en"
+      "default": "en"
     },
     "window": {
-      "title": "window",
+      "title": "Window",
+      "description": "Parameter is used for setting time range for the graph. It can be set to:\n`1D` 1 Day(default)\n`5D` 5 Days\n`1M` 1 Month\n`6M` 6 Months\n`YTD` Year to Date\n`1Y` 1 Year\n`5Y` 5 Years\n`MAX` Maximum\n\n",
       "type": "string",
-      "description": "search param.",
-      "editor": "textfield",
-      "prefill": ""
+      "default": "1Y"
     }
   },
   "required": ["q"]
