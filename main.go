@@ -8,6 +8,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"net/http"
 	"net/url"
+	"time"
 )
 
 var (
@@ -35,6 +36,19 @@ var (
 )
 
 func main() {
+	ctx, cancelFunc := context.WithTimeout(context.Background(), time.Second*30)
+	defer cancelFunc()
+
+	for {
+		select {
+		case <-ctx.Done():
+			goto a
+		default:
+			log.Println(time.Now().Format(time.DateTime))
+		}
+	}
+a:
+	return
 	// new actor
 	actor := scrapeless.New(scrapeless.WithProxy(), scrapeless.WithStorage())
 	defer actor.Close()
